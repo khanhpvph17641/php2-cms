@@ -81,15 +81,15 @@ switch ($url) {
         break;
     case 'quiz/cap-nhat':
         $ctr = new QuizController();
-        $ctr->update();
+        $ctr->editForm();
         break;
     case 'quiz/luu-cap-nhat':
         $ctr = new QuizController();
-        $ctr->saveUpdate();
+        $ctr->saveEdit();
         break;
     case 'quiz/xoa':
         $ctr = new QuizController();
-        $ctr->saveUpdate();
+        $ctr->remove();
         break;
     case 'quiz/lam-bai':
         $ctr = new QuizController();
