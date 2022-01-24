@@ -1,14 +1,11 @@
 <?php
 namespace App\Controllers;
 use App\Models\Quiz;
-
 use App\Models\Subject;
-
 class QuizController
 {
     public function index()
     {
-        
         $subjects = Subject::all();
         $quizs = Quiz::all();
         include_once "./app/views/quiz/index.php";
@@ -54,7 +51,6 @@ class QuizController
             header('location: ' . BASE_URL . 'quiz');
             die;
         }
-
         $data = [
             'name' => $_POST['name'],
             'subject_id' => $_POST['subject_id'],
