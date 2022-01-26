@@ -11,19 +11,31 @@ use App\Controllers\SubjectController;
 $url = isset($_GET['url']) ? $_GET['url'] : "/";
 // $url mong muốn của người gửi request
 switch ($url) {
+    // ========================================= DANG NHAP / DANG KY =================================== //
     case 'login':
         $ctr = new LoginController();
         $ctr->index();
         break;
-    case 'views':
-        $ctr = new IndexController();
-        $ctr->index();
-        break;
     case 'login/dang-nhap':
+        $ctr = new LoginController();
+        $ctr->signin();
+        break;
+    case 'login/luu-dang-nhap':
         $ctr = new LoginController();
         $ctr->check();
         break;
-  // ========================================= DANG NHAP / DANG KY =================================== //
+    case 'login/dang-xuat':
+            $ctr = new LoginController();
+            $ctr->logout();
+            break;
+    case 'page':
+        $ctr = new IndexController();
+        $ctr->index();
+        break;
+    case 'page/quizs':
+        $ctr = new IndexController();
+        $ctr->quiz();
+        break;
     case 'login/dang-ky':
         $ctr = new LoginController();
         $ctr->register();
@@ -37,7 +49,7 @@ switch ($url) {
         $ctr = new DashboardController();
         $ctr->index();
         break;
-  // ========================================= MON HOC =================================== //
+    // ========================================= MON HOC =================================== //
     case 'mon-hoc':
         $ctr = new SubjectController();
         $ctr->index();

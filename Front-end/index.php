@@ -7,14 +7,6 @@
     <title>Document</title>
 </head>
 <body>
-    <div class="container">
-        
-        <section class="nav">
-          admin  
-        </section>
-        <section class="content">
-
-        </section>
-    </div>
+    
 </body>
 </html>

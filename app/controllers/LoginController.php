@@ -1,33 +1,43 @@
 <?php
 namespace App\Controllers;
-
 use App\Models\User;
-
+session_start();
 class LoginController
 {
     public function index()
-    {
+    {   
+        $users = User::all();
         include_once "./app/views/login/index.php";
     }
+    public function signin()
+    {
+        include_once "./app/views/login/signin.php";
+    }
+    public function logout()
+    {   
+        include_once "./app/views/login/logout.php";
+    }
+    // lưu đăng nhâp
     public function check()
     {
         $email = $_POST['email'];
-        $password = password_hash($_POST['password'], PASSWORD_DEFAULT);
+        $password =$_POST['password'];
         $model = User::where(['email', '=', $email])->first();
         // var_dump($model);
         // die;
-        if (empty($password) || empty($email)) {
-            $_SESSION['error'] = 'vui lòng điền đầy đủ';
-            header('location: ' . BASE_URL . 'login');
-            die;
-        }
-        if (password_verify($password, $model->$password)) {
+        if (!password_verify($password, $model->password)) {
             $_SESSION['error'] = 'Sai tài khoản hoặc mật khẩu';
-            header('location: ' . BASE_URL . 'login');
+            header('location: ' . BASE_URL . 'login/dang-nhap');
             die();
-        } else {
+        } 
+        if($model->role_id == 2){
+            header('location: ' . BASE_URL . 'page');
+            $_SESSION['user'] = $model;
+            die();
+        }
+        else {
             header('location: ' . BASE_URL . 'dashboard');
-            $_SESSION['user'] = $model->id;
+            $_SESSION['user'] = $model;
             die();
         }
     }
@@ -42,10 +52,14 @@ class LoginController
         $data = [
             'name' => $_POST['name'],
             'email' => $_POST['email'],
-            'password' => $_POST['password'],
-        ];
+            'password' => password_hash($_POST['password'],PASSWORD_DEFAULT),
+            'img' => $_FILES['img']['name'],
+            ];
+            $file = $_FILES['img'];
+            $fileName = $file['name'];
+            move_uploaded_file($file['tmp_name'], './Front-end/Images/' .$fileName);
         $model->insert($data);
-        header('location: ' . BASE_URL . 'dashboard');
+        header('location: ' . BASE_URL . 'login/dang-nhap');
         die;
     }
 }

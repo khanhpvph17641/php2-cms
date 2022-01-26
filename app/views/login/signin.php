@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html>
 <style>
@@ -77,20 +78,24 @@
     <title>Untitled</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.3/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/ionicons/2.0.1/css/ionicons.min.css">
-    <link rel="stylesheet" href="assets/css/style.css">
+    <!-- <link rel="stylesheet" href="assets/css/style.css"> -->
 </head>
 
 <body>
     <div class="login-clean">
-        <form method="post" action="<?= BASE_URL . 'login/luu-dang-ky'?>" enctype="multipart/form-data">
-            <h2 class="sr-only">Register Form</h2>
+    <?php
+     if (isset($_SESSION['error'])) {
+        echo '<h1>'.$_SESSION['error'].'</h1>';
+        unset($_SESSION['error']);
+     }
+       ?>
+        <form method="post" action="<?= BASE_URL . 'login/luu-dang-nhap'?>">
+            <h2 class="sr-only">Login Form</h2>
             <div class="illustration"><i class="icon ion-ios-navigate"></i></div>
-            <div class="form-group"><input class="form-control" type="text" name="name" placeholder="Họ và tên"></div>
             <div class="form-group"><input class="form-control" type="text" name="email" placeholder="Email"></div>
             <div class="form-group"><input class="form-control" type="password" name="password" placeholder="Password"></div>
-            <div class="form-group"><input class="form-control" type="file"  name="img"></div>
             <div class="form-group"><button class="btn btn-primary btn-block" type="submit">Login</button>
-          <!-- </div><a href="#" class="forgot">Forgot your email or password?</a></form> -->
+          </div><a href="<?= BASE_URL . 'login/dang-ky'?>" class="forgot">Register</a></form>
     </div>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.3/js/bootstrap.bundle.min.js"></script>
