@@ -88,7 +88,7 @@
             <div class="form-group"><input class="form-control" type="text" name="name" placeholder="Họ và tên"></div>
             <div class="form-group"><input class="form-control" type="text" name="email" placeholder="Email"></div>
             <div class="form-group"><input class="form-control" type="password" name="password" placeholder="Password"></div>
-            <div class="form-group"><input class="form-control" type="file"  name="img"></div>
+            <div class="form-group"><input class="form-control" type="file" encty  name="img"></div>
             <div class="form-group"><button class="btn btn-primary btn-block" type="submit">Login</button>
           <!-- </div><a href="#" class="forgot">Forgot your email or password?</a></form> -->
     </div>

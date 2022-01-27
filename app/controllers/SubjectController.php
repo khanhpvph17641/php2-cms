@@ -1,8 +1,6 @@
 <?php
 namespace App\Controllers;
-
 use App\Models\Subject;
-
 class SubjectController{
     public function index(){
         $subjects = Subject::all();
@@ -14,8 +12,12 @@ class SubjectController{
     public function saveAdd(){
         $model = new Subject();
         $data = [
-            'name' => $_POST['name']
+            'name' => $_POST['name'],
+            'img' => $_FILES['img']['name'],
         ];
+        $file = $_FILES['img'];
+        $fileName = $file['name'];
+        move_uploaded_file($file['tmp_name'], './Front-end/Images/' .$fileName);
         $model->insert($data);
         header('location: ' . BASE_URL . 'mon-hoc');
         die;
@@ -37,9 +39,8 @@ class SubjectController{
             die;
         }
         $data = [
-            'name' => $_POST['name']
+            'name' => $_POST['name'],
         ];
-        $model->update($data);
         header('location: ' . BASE_URL . 'mon-hoc');
         die;
     }

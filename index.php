@@ -3,7 +3,7 @@ require_once './commons/helpers.php';
 require_once './vendor/autoload.php';
 
 use App\Controllers\DashboardController;
-use App\Controllers\IndexController;
+use App\Controllers\Dashboardtroller;
 use App\Controllers\LoginController;
 use App\Controllers\QuizController;
 use App\Controllers\SubjectController;
@@ -18,22 +18,22 @@ switch ($url) {
         break;
     case 'login/dang-nhap':
         $ctr = new LoginController();
-        $ctr->signin();
+        $ctr-> signin();
         break;
     case 'login/luu-dang-nhap':
         $ctr = new LoginController();
         $ctr->check();
         break;
     case 'login/dang-xuat':
-            $ctr = new LoginController();
-            $ctr->logout();
-            break;
+        $ctr = new LoginController();
+        $ctr-> logout();
+        break;
     case 'page':
-        $ctr = new IndexController();
+        $ctr = new DashboardController();
         $ctr->index();
         break;
     case 'page/quizs':
-        $ctr = new IndexController();
+        $ctr = new DashboardController();
         $ctr->quiz();
         break;
     case 'login/dang-ky':
@@ -47,7 +47,7 @@ switch ($url) {
     //  end login
     case 'dashboard':
         $ctr = new DashboardController();
-        $ctr->index();
+        $ctr->dashboard();
         break;
     // ========================================= MON HOC =================================== //
     case 'mon-hoc':
@@ -81,7 +81,7 @@ switch ($url) {
     // ========================================= QUIZ =================================== //
     case 'quiz':
         $ctr = new QuizController();
-        $ctr->index();
+        $ctr->index($id);
         break;
     case 'quiz/tao-moi':
         $ctr = new QuizController();

@@ -1,6 +1,6 @@
 <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
-<script src="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
-<script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+<!-- <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script> -->
+<!-- <script src="//code.jquery.com/jquery-1.11.1.min.js"></script> -->
 <!------ Include the above in your HEAD tag ---------->
 <style>
 body {
@@ -175,116 +175,49 @@ li {
     background: -webkit-linear-gradient(left, #410d22 48%, #1b1e21 48%);
     background: linear-gradient(45deg, #410d22 48%, #1b1e21 48%);
 }
+
 </style>
 <link rel="stylesheet" href="<?=CONTENT_URL . 'Css/css.css'?>">
 <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
-<?php
-     if (isset($_SESSION['tb'])) {
-        echo '<script>'. alert($_SESSION['tb']).'</script>';
-        unset($_SESSION['tb']);
-     }
-       ?>
-<div class="fixed-top">
-    <header class="topbar">
-        <div class="container">
-            <div class="row">
-                <!-- social icon-->
-                <div class="col-sm-12">
-                    <ul class="social-network">
-                        <li><a class="waves-effect waves-dark" href="#"><i class="fa fa-facebook"></i></a></li>
-                        <li><a class="waves-effect waves-dark" href="#"><i class="fa fa-twitter"></i></a></li>
-                        <li><a class="waves-effect waves-dark" href="#"><i class="fa fa-linkedin"></i></a></li>
-                        <li><a class="waves-effect waves-dark" href="#"><i class="fa fa-youtube"></i></a></li>
-                        <li><a class="waves-effect waves-dark" href="#"><i class="fa fa-google-plus"></i></a></li>
-                    </ul>
-                </div>
 
-            </div>
-        </div>
-    </header>
-    <nav class="navbar navbar-expand-lg navbar-dark mx-background-top-linear">
-        <div class="container">
-            <a class="navbar-brand" rel="nofollow" target="_blank" href="<?=BASE_URL . 'views'?>"
-                style="text-transform: uppercase;"><img width="150px"
-                    src="<?=CONTENT_URL . 'Images/template.png'?>"></a>
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive"
-                aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarResponsive">
-
-                <ul class="navbar-nav ml-auto">
-
-                    <li class="nav-item active">
-                        <a class="nav-link" href="https://nusasatu.com">Home
-                            <span class="sr-only">(current)</span>
-                        </a>
-                    </li>
-                    <li class="nav-item active">
-                        <a class="nav-link" href="https://nusasatu.com">Post
-                            <span class="sr-only">(current)</span>
-                        </a>
-                    </li>
-                    <li class="nav-item active">
-                        <a class="nav-link" href="<?= BASE_URL.'login/dang-xuat' ?>">Đăng Xuât
-                            <span class="sr-only">(current)</span>
-                        </a>
-                    </li>
-                    <li class="nav-item active">
-
-                        <!-- <?php if ($_SESSION['user']) {?>
-                        <a class="nav-link"> Hello
-                            <?= $_SESSION['user']->name?>
-                            <?php }?> -->
-                            <span class="sr-only">(current)</span>
-                        </a>
-                    </li>
-
-                </ul>
-            </div>
-        </div>
-    </nav>
-    
-    <section class="banner">
-        <div class="nav-banner">
-            <img src="<?= CONTENT_URL . 'Images/banner1.jpg'?>" id="banner" alt="">
-        </div>
-        <script>
-        var arr = ['<?= CONTENT_URL . 'Images/banner1.jpg'?>', '<?= CONTENT_URL . 'Images/banner 2.jpg'?>',
-            '<?= CONTENT_URL . 'Images/banner 3.jpg'?>'
-        ]
-        var index = 0;
-
-        function slideshow() {
-            document.getElementById('banner').src = arr[index]
-            index++;
-            if (index == arr.length) {
-                index = 0;
-            }
-
-            setTimeout('slideshow()', 2000)
-        }
-        slideshow();
-        </script>
-    </section>
     <div>
-        <h2>Môn Học</h2>
+        <h2>DANH SÁCH MÔN HỌC</h2>
     </div>
+    <style>
+        .subjects .item-subjects{
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+    width: 100%;
+    justify-content: space-evenly;
+}   
+.subjects .item-subjects .stay__item{
+    text-align: center;
+}
+h4,h2
+{   
+    color:#410d22;
+    margin:15px;
+    text-align: center;
+}
+
+    </style>
     <section class="subjects">
-        <div>
+        <div class="item-subjects">
             <!-- show ra toàn bộ môn học -->
             <?php foreach ($subjects as $sub) {?>
             <div class="stay__item">
-                <div class="room__info">
-                    <a href="<?= BASE_URL . 'page/quizs?subjectId=' . $sub->id?>">
+                <div class="text">
+               <h4> <a href="<?= BASE_URL . 'page/quizs?subjectId=' . $sub->id?>">
                         <?=$sub->name?>
-                    </a>
+                    </a></h4>
+                </div>
+                <div class ="img_subjects">
+                
+                <img  width="200px" class="img-sp" src="<?= CONTENT_URL.'Images/'.$sub->img ?>">
                 </div>
             </div>
             <!--  Modal -->
             <?php }?>
         </div>
     </section>
-
-
 </div>

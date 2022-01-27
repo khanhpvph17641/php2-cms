@@ -23,8 +23,6 @@ class LoginController
         $email = $_POST['email'];
         $password =$_POST['password'];
         $model = User::where(['email', '=', $email])->first();
-        // var_dump($model);
-        // die;
         if (!password_verify($password, $model->password)) {
             $_SESSION['error'] = 'Sai tài khoản hoặc mật khẩu';
             header('location: ' . BASE_URL . 'login/dang-nhap');
@@ -32,12 +30,12 @@ class LoginController
         } 
         if($model->role_id == 2){
             header('location: ' . BASE_URL . 'page');
-            $_SESSION['user'] = $model;
+            // $_SESSION['user'] = $model->id;
             die();
         }
         else {
             header('location: ' . BASE_URL . 'dashboard');
-            $_SESSION['user'] = $model;
+            // $_SESSION['user'] = $model;
             die();
         }
     }

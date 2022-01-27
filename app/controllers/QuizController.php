@@ -4,11 +4,17 @@ use App\Models\Quiz;
 use App\Models\Subject;
 class QuizController
 {
-    public function index()
+   public function index($id)
     {
         $subjects = Subject::all();
         $quizs = Quiz::all();
-        include_once "./app/views/quiz/index.php";
+        $id = $_GET['id'];
+        $model = Quiz::where(['id','=', $id])->get();
+        if(!$model){
+            header('location: ' . BASE_URL . 'quiz?subjectId='.$model->id);
+            die;
+        }
+        include_once './app/views/quiz/index.php';
     }
 
     public function addForm(){

@@ -3,17 +3,11 @@
   margin-top: 10px;
 }
 #nav-banner img {
-  /* width: 90%; */
-  border-radius: 50%;
-  -moz-border-radius: 50%;
-  -webkit-border-radius: 50%;
+  width: 100%;
 }
 .banner img {
     /* text-align: center; */
-    display: inline-block;
-  width: 98%;
-  margin-left: 18px;
-  border-radius: 10px;
+  width: 100%;
   /* -moz-border-radius: 50%; */
   /* -webkit-border-radius: 50%; */
 }
