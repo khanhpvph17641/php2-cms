@@ -1,196 +1,124 @@
-<link href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
-<!-- <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script> -->
-<!-- <script src="//code.jquery.com/jquery-1.11.1.min.js"></script> -->
-<!------ Include the above in your HEAD tag ---------->
-<style>
-body {
-    margin: 0;
-    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
-    font-size: 1rem;
-    font-weight: 400;
-    line-height: 1.5;
-    color: #212529;
-    background-color: #f7f7f7;
+<!doctype html>
+<html lang="en">
+
+<head>
+    <title>Sidebar 01</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <link href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700,800,900" rel="stylesheet">
+
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="<?= CONTENT_URL . 'Css/style.css' ?>">
+</head>
+
+<body>
+
+    <div class="wrapper d-flex align-items-stretch">
+    <nav id="sidebar">
+            <div class="p-4 pt-5">
+                <a href="#" class="img logo rounded-circle mb-5"
+                    style="background-image: url(<?= CONTENT_URL . 'Images/template.png' ?>);"></a>
+                <ul class="list-unstyled components mb-5">
+                    <li class="active">
+                        <a href="#homeSubmenu" data-toggle="collapse" aria-expanded="false"
+                            class="dropdown-toggle">Home</a>
+                        <ul class="collapse list-unstyled" id="homeSubmenu">
+                            <li>
+                                <a href="#">Home 1</a>
+                            </li>
+                            <li>
+                                <a href="#">Home 2</a>
+                            </li>
+                            <li>
+                                <a href="#">Home 3</a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="#">About</a>
+                    </li>
+                    <li>
+                        <a href="#pageSubmenu" data-toggle="collapse" aria-expanded="false"
+                            class="dropdown-toggle">Pages</a>
+                        <ul class="collapse list-unstyled" id="pageSubmenu">
+                            <li>
+                                <a href="#">Page 1</a>
+                            </li>
+                            <li>
+                                <a href="#">Page 2</a>
+                            </li>
+                            <li>
+                                <a href="#">Page 3</a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="#">Portfolio</a>
+                    </li>
+                    <li>
+                        <a href="#">Contact</a>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+
+        <!-- Page Content  -->
+        <div id="content" class="p-4 p-md-5">
+
+            <nav class="navbar navbar-expand-lg navbar-light bg-light">
+                <div class="container-fluid">
+
+                    <button type="button" id="sidebarCollapse" class="btn btn-primary">
+                        <i class="fa fa-bars"></i>
+                        <span class="sr-only">Toggle Menu</span>
+                    </button>
+                    <button class="btn btn-dark d-inline-block d-lg-none ml-auto" type="button" data-toggle="collapse"
+                        data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+                        aria-expanded="false" aria-label="Toggle navigation">
+                        <i class="fa fa-bars"></i>
+                    </button>
+
+                    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                        <ul class="nav navbar-nav ml-auto">
+                            <li class="nav-item active">
+                                <a class="nav-link" href="#">Home</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="#">About</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="#">Portfolio</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="#">Contact</a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </nav>
+        <style>
+           body{
+            font-family: "Poppins", Arial, sans-serif;
+    font-size: 14px;
+    line-height: 1.8;
+    font-weight: normal;
+    background: #ffffff;
+    color: gray;
 }
-
-.navbar {
-    display: -ms-flexbox;
-    display: flex;
-    -ms-flex-wrap: wrap;
-    flex-wrap: wrap;
-    -ms-flex-align: center;
-    align-items: center;
-    -ms-flex-pack: justify;
-    justify-content: space-between;
-    padding: 5px;
-}
-
-/*
-headeer top
-*/
-.topbar {
-    background-color: #073763;
-    padding: 0;
-}
-
-.topbar .container .row {
-    margin: -7px;
-    padding: 0;
-}
-
-.topbar .container .row .col-md-12 {
-    padding: 0;
-}
-
-.topbar p {
-    margin: 0;
-    display: inline-block;
-    font-size: 13px;
-    color: #990000;
-}
-
-.topbar p>i {
-    margin-right: 5px;
-}
-
-.topbar p:last-child {
-    text-align: right;
-}
-
-header .navbar {
-    margin-bottom: 0;
-}
-
-.topbar li.topbar {
-    display: inline;
-    padding-right: 18px;
-    line-height: 52px;
-    transition: all .3s linear;
-}
-
-.topbar li.topbar:hover {
-    color: #1bbde8;
-}
-
-.topbar ul.info i {
-    color: #131313;
-    font-style: normal;
-    margin-right: 8px;
-    display: inline-block;
-    position: relative;
-    top: 4px;
-}
-
-.topbar ul.info li {
-    float: right;
-    padding-left: 30px;
-    color: #ffffff;
-    font-size: 13px;
-    line-height: 44px;
-}
-
-.topbar ul.info i span {
-    color: #aaa;
-    font-size: 13px;
-    font-weight: 400;
-    line-height: 50px;
-    padding-left: 18px;
-}
-
-ul.social-network {
-    border: none;
-    margin-top: 10;
-    padding: 0;
-}
-
-ul.social-network li {
-    border: none;
-    margin: 10;
-}
-
-ul.social-network li i {
-    margin: 6;
-}
-
-ul.social-network li {
-    display: inline;
-    margin: 0 5px;
-    border: 0px solid #2D2D2D;
-    padding: 5px 0 0;
-    width: 32px;
-    display: inline-block;
-    text-align: center;
-    height: 32px;
-    vertical-align: baseline;
-    color: #000;
-}
-
-ul.social-network {
-    list-style: none;
-    margin: 5px 0 10px -25px;
-    float: right;
-}
-
-.waves-effect {
-    position: relative;
-    cursor: pointer;
-    display: inline-block;
-    overflow: hidden;
-    -webkit-user-select: none;
-    -moz-user-select: none;
-    -ms-user-select: none;
-    user-select: none;
-    -webkit-tap-highlight-color: transparent;
-    vertical-align: middle;
-    z-index: 1;
-    will-change: opacity, transform;
-    transition: .3s ease-out;
-    color: #fff;
-}
-
-a {
-    color: #0a0a0a;
-    text-decoration: none;
-}
-
-li {
-    list-style-type: none;
-}
-
-.bg-image-full {
-    background-position: center center;
-    background-repeat: no-repeat;
-    -webkit-background-size: cover;
-    -moz-background-size: cover;
-    background-size: cover;
-    -o-background-size: cover;
-}
-
-.bg-dark {
-    background-color: #222 !important;
-}
-
-.mx-background-top-linear {
-    background: -webkit-linear-gradient(45deg, #410d22 48%, #1b1e21 48%);
-    background: -webkit-linear-gradient(left, #410d22 48%, #1b1e21 48%);
-    background: linear-gradient(45deg, #410d22 48%, #1b1e21 48%);
-}
-
-</style>
-<link rel="stylesheet" href="<?=CONTENT_URL . 'Css/css.css'?>">
-<link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
-
-    <div>
-        <h2>DANH SÁCH MÔN HỌC</h2>
-    </div>
-    <style>
-        .subjects .item-subjects{
+           
+.item{
     display: grid;
-    grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
-    width: 100%;
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr ;
     justify-content: space-evenly;
+    overflow-x: auto;
 }   
-.subjects .item-subjects .stay__item{
+
+.item .stay__item{
+    overflow-x: auto;
+    min-width: 210px;
+    }
+ .item.stay__item{
     text-align: center;
 }
 h4,h2
@@ -199,25 +127,44 @@ h4,h2
     margin:15px;
     text-align: center;
 }
+        </style>
+            <h2 class="mb-4">Tất Cả Môn Học</h2>
+                <div class="item">
+                        <?php foreach ($subjects as $sub) {?>
+                        <div class="stay__item">
+                        <div class="text">
+                            <h4> <a href="<?= BASE_URL . 'page/quizs?subjectId=' . $sub->id?>">
+                                    <?=$sub->name?>
+                            </a></h4>
+                        </div>
+                        <div class="img_subjects">
+                            <img width="300px" height="200px" class="img-sp"
+                                src="<?= CONTENT_URL.'Images/'.$sub->img ?>">
+                        </div>
+                        </div>
+                        <?php }?>
+                </div>
+                <h2 class="mb-4">Bài Viết Liên Quan</h2>
+                <div class="item">
+                        <?php foreach ($subjects as $sub) {?>
+                        <div class="stay__item">
+                        <div class="text">
+                            <h4> <a href="<?= BASE_URL . 'page/quizs?subjectId=' . $sub->id?>">
+                                    <?=$sub->name?>
+                            </a></h4>
+                        </div>
+                        <div class="img_subjects">
+                            <img width="300px" height="200px" class="img-sp"
+                                src="<?= CONTENT_URL.'Images/'.$sub->img ?>">
+                        </div>
+                        </div>
+                        <?php }?>
+                </div>
 
-    </style>
-    <section class="subjects">
-        <div class="item-subjects">
-            <!-- show ra toàn bộ môn học -->
-            <?php foreach ($subjects as $sub) {?>
-            <div class="stay__item">
-                <div class="text">
-               <h4> <a href="<?= BASE_URL . 'page/quizs?subjectId=' . $sub->id?>">
-                        <?=$sub->name?>
-                    </a></h4>
-                </div>
-                <div class ="img_subjects">
-                
-                <img  width="200px" class="img-sp" src="<?= CONTENT_URL.'Images/'.$sub->img ?>">
-                </div>
-            </div>
-            <!--  Modal -->
-            <?php }?>
-        </div>
-    </section>
-</div>
+    <script src="<?= CONTENT_URL .'Js/jquery.min.js' ?>"></script>
+    <script src="<?= CONTENT_URL .'Js/popper.js' ?>"></script>
+    <script src="<?= CONTENT_URL .'Js/bootstrap.min.js' ?>"></script>
+    <script src="<?= CONTENT_URL .'Js/main.js' ?>"></script>
+</body>
+
+</html>

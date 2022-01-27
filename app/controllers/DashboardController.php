@@ -12,7 +12,7 @@ class DashboardController{
     public function index(){
         // $id = $_GET['id'];
         // $user = User::where('id', '=',$id)->first();
-        $_SESSION['user'] = $user;
+        // $_SESSION['user'] = $user;
         $subjects = Subject::all();
         include_once "./app/views/page/header.php";
         include_once "./app/views/page/index.php";
