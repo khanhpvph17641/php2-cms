@@ -3,11 +3,13 @@ namespace App\Models;
 use PDO;
 class BaseModel 
 {
+	
 	protected function getConnect()
 	{
         $conn = new PDO('mysql:host=localhost;dbname=php2_asm1;charset=utf8', 'root', '');
         return $conn;
     }
+    
 	public function insert($arr){
 		$this->queryBuilder = "insert into $this->tableName ";
 		$cols = " (";
@@ -21,13 +23,15 @@ class BaseModel
 		$cols .= ") ";
 		$vals .= ") ";
 		$this->queryBuilder .= $cols . ' values ' . $vals;
-		$stmt = $this->getConnect()
-					->prepare($this->queryBuilder);
+		$connect = $this->getConnect();
+		$stmt = $connect->prepare($this->queryBuilder);
 		foreach ($arr as $key => &$value) {
 			$stmt->bindParam(":$key", $value);
 		}
 		// var_dump($this->queryBuilder);die;
 		$stmt->execute();
+		$lastInsertId = $connect->lastInsertId();
+		return self::where(['id', '=', $lastInsertId])->first();
 	}
 	public function update($arr){
 		$this->queryBuilder = "update $this->tableName set ";
@@ -50,24 +54,31 @@ class BaseModel
 		$model->queryBuilder = $sqlQuery;
 		return $model;
 	}
+
 	public function orderBy($col, $asc = true){
 		$this->queryBuilder .= " order by $col";
 		$this->queryBuilder .= $asc == true ? " asc " : " desc ";
 		return $this;
 	}
+
 	public static function sttOrderBy($col, $asc = true){
 		$model =  new static();
 		$model->queryBuilder = "select * from $model->tableName order by $col";
 		$model->queryBuilder .= $asc == true ? " asc " : " desc ";
+		
 		return $model;
 	}
+
 	public function limit($take, $skip = false){
 		$this->queryBuilder .= " limit $take";
 		if($skip != false){
 			$this->queryBuilder .= ", $skip";
 		}
+
 		return $this;
 	}
+
+
 	public function execute(){
 		$stmt = $this->getConnect()->prepare($this->queryBuilder);
 		return $stmt->execute();
@@ -83,6 +94,7 @@ class BaseModel
  	public static function where($arr){
  		$model = new static();
  		$model->queryBuilder = "select * from $model->tableName where $arr[0] $arr[1] '$arr[2]'";
+
  		return $model;
  	}
 
@@ -93,6 +105,7 @@ class BaseModel
 
 		return $model->execute();
 	}
+
  	public function andWhere($arr){
  		$this->queryBuilder .= " and $arr[0] $arr[1] '$arr[2]'";
  		return $this;
@@ -102,9 +115,11 @@ class BaseModel
  		return $this;
  	}
  	public function first(){
+
  		$stmt = $this->getConnect()->prepare($this->queryBuilder);
 		$stmt->execute();
 		$result = $stmt->fetchAll(PDO::FETCH_CLASS, get_class($this));
+
 		if(count($result) > 0){
 			return $result[0];
 		}else{
@@ -115,6 +130,7 @@ class BaseModel
  		$stmt = $this->getConnect()->prepare($this->queryBuilder);
 		$stmt->execute();
 		$result = $stmt->fetchAll(PDO::FETCH_CLASS, get_class($this));
+		
 		return $result;
  	}
 }

@@ -1,0 +1,39 @@
+<?php $_shouldextend[1]=1; ?>
+<?php $this->startSection('title', 'Danh sách câu trả lời'); ?>
+<?php $this->startSection('content'); ?>
+<table class="table">
+ <thead>
+ <th>Mã Answer</th>
+ <th>Content</th>
+ <th>Correct</th>
+ <th>
+ <a href="<?= BASE_URL . 'answer/tao-moi?question_id=' . $questions->id ?>">Tạo mới</a>
+ </th>
+ </thead>
+ <tbody>
+ <?php foreach ($answer as $answer): ?>
+ <tr>
+ <td><?=$answer->id?></td>
+ <td>
+ <?=$answer->content ?></a>
+ </td>
+ <td>
+ <?=$answer->is_correct ?></a>
+ </td>
+ <td>
+ <a href="<?=BASE_URL . 'answer/cap-nhat?id=' . $answer->id?>">Sửa</a>
+ <a href="<?=BASE_URL . 'answer/xoa?id=' . $answer->id?>">Xóa</a>
+ </td>
+ </tr>
+ <?php endforeach?>
+ </tbody>
+</table>
+<?php $this->stopSection(); ?>
+<?php $this->startSection('page-script'); ?>
+<script>
+ $('.btn-remove').click(function(){
+ console.log(1);
+ });
+</script>
+<?php $this->stopSection(); ?>
+<?php if (isset($_shouldextend[1])) { echo $this->runChild('layouts.main'); } ?>

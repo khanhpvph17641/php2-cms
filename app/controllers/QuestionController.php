@@ -1,66 +1,64 @@
 <?php
 namespace App\Controllers;
-use App\Models\Quiz;
 use App\Models\Question;
+use App\Models\Quiz;
+use App\Models\Subject;
 class QuestionController
 {
-    public function index()
+    public function index($id = null)
     {
-        $quizs = Quiz::all();
-        $questions = Question::all();
-        include_once "./app/views/question/index.php";
+        $id = $_GET['id'];
+        $quizs =  Quiz::where('id', $id)->first();
+        $subjects = Subject::where('id', $id)->first();
+        $questions = Question::where('quiz_id', $id)->get();
+        return view('question.index', ['questions' => $questions,'quizs' => $quizs]); 
+        // include_once "./app/views/page/header2.php";
+        // include_once "./app/views/question/index.php";
     }
-
     public function addForm(){
-        $quizs = Subject::all();
+        $quizs_id = $_GET['id'];
         include_once "./app/views/question/add-form.php";
     }
     public function saveAdd(){
-        $model = new Question();
+        $quizs_id = $_GET['id'];
         $data = [
             'name' => $_POST['name'],
-            'subject_id' => $_POST['subject_id'],
-            'duration_minutes' => $_POST['duration_minutes'],
-            'start_time' => $_POST['start_time'],
-            'end_time' => $_POST['end_time'],
-            'status' => $_POST['status'],
+            'quiz_id' => $quizs_id
         ];
-        $model->insert($data);
-        header('location: ' . BASE_URL . 'question');
+        $model = new Question();
+         $question =  $model->insert($data);
+        header('location: ' . BASE_URL . 'question?id=' . $quizs_id);
         die;
-    }
+    } 
     public function remove(){
         $id = $_GET['id'];
+        $quiz = $_POST['quiz_id'];
         Question::destroy($id);
-        header('location: ' . BASE_URL . 'question');
+        header('location: ' . BASE_URL . 'question?id=' . $quiz);
         die;
     }
-    public function editForm(){
+    public function editForm($id = null){
         $id = $_GET['id'];
-        $model = Question::where(['id','=', $id])->first();
+        $model = Quiz::where('id', $id)->first();
         if(!$model){
-            header('location: ' . BASE_URL . 'question');
+            header('location: ' . BASE_URL . 'quiz');
             die;
         }
-        include_once './app/views/question/edit-form.php';
+        include_once './app/views/quiz/edit-form.php';
     }
-     public function saveEdit(){
+     public function saveEdit($id = null){
         $id = $_GET['id'];
-        $model = Question::where(['id', '=', $id])->first();
+        $model = Quiz::where('id', $id)->first();
         if(!$model){
-            header('location: ' . BASE_URL . 'question');
+            header('location: ' . BASE_URL . 'quiz');
             die;
         }
         $data = [
             'name' => $_POST['name'],
-            'subject_id' => $_POST['subject_id'],
-            'duration_minutes' => $_POST['duration_minutes'],
-            'start_time' => $_POST['start_time'],
-            'end_time' => $_POST['end_time'],
-            'status' => $_POST['status'],
+            'quiz_id' => $_POST['quiz_id'],
         ];
         $model->update($data);
-        header('location: ' . BASE_URL . 'question');
+        header('location: ' . BASE_URL . 'question?id=' . $_POST['quiz_id']);
         die;
     }
    

@@ -7,7 +7,7 @@ class LoginController
     public function index()
     {   
         $users = User::all();
-        include_once "./app/views/login/index.php";
+        return view('login.index', ['users' => $users]);    
     }
     public function signin()
     {
@@ -22,20 +22,20 @@ class LoginController
     {
         $email = $_POST['email'];
         $password =$_POST['password'];
-        $model = User::where(['email', '=', $email])->first();
+        $model = User::where('email', $email)->first();
         if (!password_verify($password, $model->password)) {
             $_SESSION['error'] = 'Sai tài khoản hoặc mật khẩu';
             header('location: ' . BASE_URL . 'login/dang-nhap');
             die();
         } 
-        if($model->role_id == 2){
-            header('location: ' . BASE_URL . 'page');
-            // $_SESSION['user'] = $model->id;
+        if($model->role_id == 1){
+            header('location: ' . BASE_URL . 'view');
+            $_SESSION['auth'] = $model->id;
             die();
         }
         else {
-            header('location: ' . BASE_URL . 'dashboard');
-            // $_SESSION['user'] = $model;
+            header('location: ' . BASE_URL . 'page');
+            $_SESSION['auth'] = $model;
             die();
         }
     }

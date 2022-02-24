@@ -8289,5 +8289,8 @@ a[data-toggle="collapse"] {
   color: rgba(255, 255, 255, 0.5); }
 .subjects .item-subjects .stay__item{
   display: grid;
-  grid-template-columns: 1fr 1fr 1fr 1fr;
+  grid-template-columns: 1fr 1fr 1fr;
+}
+.item{
+  display: flex;
 }

@@ -1,141 +1,12 @@
-<!doctype html>
-<html lang="en">
+<h2 class="mb-4">Tất Cả Môn Học</h2>
 
-<head>
-    <title>Sidebar 01</title>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-
-    <link href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700,800,900" rel="stylesheet">
-
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
-    <link rel="stylesheet" href="<?= CONTENT_URL . 'Css/style.css' ?>">
-</head>
-
-<body>
-
-    <div class="wrapper d-flex align-items-stretch">
-    <nav id="sidebar">
-            <div class="p-4 pt-5">
-                <a href="#" class="img logo rounded-circle mb-5"
-                    style="background-image: url(<?= CONTENT_URL . 'Images/template.png' ?>);"></a>
-                <ul class="list-unstyled components mb-5">
-                    <li class="active">
-                        <a href="#homeSubmenu" data-toggle="collapse" aria-expanded="false"
-                            class="dropdown-toggle">Home</a>
-                        <ul class="collapse list-unstyled" id="homeSubmenu">
-                            <li>
-                                <a href="#">Home 1</a>
-                            </li>
-                            <li>
-                                <a href="#">Home 2</a>
-                            </li>
-                            <li>
-                                <a href="#">Home 3</a>
-                            </li>
-                        </ul>
-                    </li>
-                    <li>
-                        <a href="#">About</a>
-                    </li>
-                    <li>
-                        <a href="#pageSubmenu" data-toggle="collapse" aria-expanded="false"
-                            class="dropdown-toggle">Pages</a>
-                        <ul class="collapse list-unstyled" id="pageSubmenu">
-                            <li>
-                                <a href="#">Page 1</a>
-                            </li>
-                            <li>
-                                <a href="#">Page 2</a>
-                            </li>
-                            <li>
-                                <a href="#">Page 3</a>
-                            </li>
-                        </ul>
-                    </li>
-                    <li>
-                        <a href="#">Portfolio</a>
-                    </li>
-                    <li>
-                        <a href="#">Contact</a>
-                    </li>
-                </ul>
-            </div>
-        </nav>
-
-        <!-- Page Content  -->
-        <div id="content" class="p-4 p-md-5">
-
-            <nav class="navbar navbar-expand-lg navbar-light bg-light">
-                <div class="container-fluid">
-
-                    <button type="button" id="sidebarCollapse" class="btn btn-primary">
-                        <i class="fa fa-bars"></i>
-                        <span class="sr-only">Toggle Menu</span>
-                    </button>
-                    <button class="btn btn-dark d-inline-block d-lg-none ml-auto" type="button" data-toggle="collapse"
-                        data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
-                        aria-expanded="false" aria-label="Toggle navigation">
-                        <i class="fa fa-bars"></i>
-                    </button>
-
-                    <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                        <ul class="nav navbar-nav ml-auto">
-                            <li class="nav-item active">
-                                <a class="nav-link" href="#">Home</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="#">About</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="#">Portfolio</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="#">Contact</a>
-                            </li>
-                        </ul>
-                    </div>
-                </div>
-            </nav>
-        <style>
-           body{
-            font-family: "Poppins", Arial, sans-serif;
-    font-size: 14px;
-    line-height: 1.8;
-    font-weight: normal;
-    background: #ffffff;
-    color: gray;
-}
-           
-.item{
-    display: grid;
-    grid-template-columns: 1fr 1fr 1fr 1fr 1fr ;
-    justify-content: space-evenly;
-    overflow-x: auto;
-}   
-
-.item .stay__item{
-    overflow-x: auto;
-    min-width: 210px;
-    }
- .item.stay__item{
-    text-align: center;
-}
-h4,h2
-{   
-    color:#410d22;
-    margin:15px;
-    text-align: center;
-}
-        </style>
-            <h2 class="mb-4">Tất Cả Môn Học</h2>
                 <div class="item">
                         <?php foreach ($subjects as $sub) {?>
                         <div class="stay__item">
                         <div class="text">
                             <h4> <a href="<?= BASE_URL . 'page/quizs?subjectId=' . $sub->id?>">
-                                    <?=$sub->name?>
-                            </a></h4>
+                        <?=$sub->name?>
+                         </a></h4>
                         </div>
                         <div class="img_subjects">
                             <img width="300px" height="200px" class="img-sp"
@@ -144,27 +15,5 @@ h4,h2
                         </div>
                         <?php }?>
                 </div>
-                <h2 class="mb-4">Bài Viết Liên Quan</h2>
-                <div class="item">
-                        <?php foreach ($subjects as $sub) {?>
-                        <div class="stay__item">
-                        <div class="text">
-                            <h4> <a href="<?= BASE_URL . 'page/quizs?subjectId=' . $sub->id?>">
-                                    <?=$sub->name?>
-                            </a></h4>
-                        </div>
-                        <div class="img_subjects">
-                            <img width="300px" height="200px" class="img-sp"
-                                src="<?= CONTENT_URL.'Images/'.$sub->img ?>">
-                        </div>
-                        </div>
-                        <?php }?>
-                </div>
-
-    <script src="<?= CONTENT_URL .'Js/jquery.min.js' ?>"></script>
-    <script src="<?= CONTENT_URL .'Js/popper.js' ?>"></script>
-    <script src="<?= CONTENT_URL .'Js/bootstrap.min.js' ?>"></script>
-    <script src="<?= CONTENT_URL .'Js/main.js' ?>"></script>
-</body>
-
-</html>
+                <!-- end item -->
+                <!-- <h2 class="mb-4">Bài Viết Liên Quan</h2> -->

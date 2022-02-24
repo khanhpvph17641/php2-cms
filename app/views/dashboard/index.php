@@ -1,20 +1,35 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
-<body>
-    <div class="container">
-        
-        <section class="nav">
-          admin  
-        </section>
-        <section class="content">
-
-        </section>
+<form action="" method="get">
+    <div class="row">
+        <div class="col-6">
+            <div class="form-group">
+                <label for="">Tìm kiếm</label>
+                <input type="text" name="keyword" class="form-control">
+            </div>
+        </div>
+        <div class="col-6">
+            <div class="form-group">
+                <label for="">Sắp xếp theo thứ tự</label>
+                <select name="order" class="form-control">
+                    <option value="1">Tăng dần</option>
+                    <option value="2">Giảm dần</option>
+                </select>
+            </div>
+        </div>
     </div>
-</body>
-</html>
+</form>
+<div class="row">
+    @foreach($subjects as $sub)
+    <div class="col-3 mt-3" >
+        <div class="card" style="width: 100%;">
+            <img src="..." class="card-img-top" alt="...">
+            <div class="card-body">
+                <h5 class="card-title">{{$sub->name}}</h5>
+                <p class="card-text">
+                    Số quizs: {{count($sub->quizs)}}
+                </p>
+                <a href="#" class="btn btn-primary">Go somewhere</a>
+            </div>
+        </div>
+    </div>
+    @endforeach
+</div>
