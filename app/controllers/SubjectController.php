@@ -5,13 +5,11 @@ use App\Models\User;
 class SubjectController{
     public function index(){
         $subjects = Subject::all();
-        // include_once "./app/views/page/header2.php";
-        return view('mon-hoc.index', ['subjects' => $subjects]);    
-        // include_once "./app/views/mon-hoc/index.php";
+        return view('index', ['subjects' => $subjects]);    
         
     }
     public function addForm(){
-        include_once "./app/views/mon-hoc/add-form.php";
+        include_once "./app/views/add-form.php";
     }
     public function saveAdd(){
 
@@ -36,7 +34,7 @@ class SubjectController{
             header('location: ' . BASE_URL . 'mon-hoc');
             die;
         }
-        include_once './app/views/mon-hoc/edit-form.php';
+        include_once './app/views/edit-form.php';
     }
      public function saveEdit($id = null){
         $id = $_GET['id'];
